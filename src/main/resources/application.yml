@@ -10,7 +10,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update  #(create, create-drop, validate, update)
+      ddl-auto: none  #(create, create-drop, validate, update)
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
