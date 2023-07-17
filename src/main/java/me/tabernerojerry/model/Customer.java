@@ -13,7 +13,12 @@ import lombok.Setter;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(
+            name = "customers_id_seq",
+            sequenceName = "customers_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customers_id_seq")
     private Integer id;
 
     private String email;
