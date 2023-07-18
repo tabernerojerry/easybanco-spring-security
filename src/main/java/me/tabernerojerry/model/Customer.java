@@ -6,8 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
-@Table(name = "customers")
+@Table(name = "customer")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,13 +17,13 @@ public class Customer {
 
     @Id
     @SequenceGenerator(
-            name = "customers_id_seq",
-            sequenceName = "customers_id_seq",
+            name = "customer_customer_id_seq",
+            sequenceName = "customer_customer_id_seq",
             allocationSize = 1
     )
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customers_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_customer_id_seq")
     @Column(name = "customer_id")
-    private Integer id;
+    private Long customerId;
 
     private String name;
 
@@ -36,6 +38,6 @@ public class Customer {
     private String role;
 
     @Column(name = "create_dt")
-    private String createDt;
+    private Date createDt;
 
 }

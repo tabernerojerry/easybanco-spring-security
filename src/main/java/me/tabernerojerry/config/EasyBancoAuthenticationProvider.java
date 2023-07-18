@@ -32,7 +32,7 @@ public class EasyBancoAuthenticationProvider implements AuthenticationProvider {
         if (customerList.isEmpty()) {
             throw new BadCredentialsException("Bad credentials");
         } else {
-            if (passwordEncoder.matches(password, customerList.get(0).getPassword())) {
+            if (passwordEncoder.matches(password, customerList.get(0).getPwd())) {
                 List<GrantedAuthority> authorityList = new ArrayList<>();
                 authorityList.add(new SimpleGrantedAuthority(customerList.get(0).getRole()));
                 return new UsernamePasswordAuthenticationToken(username, password, authorityList);
