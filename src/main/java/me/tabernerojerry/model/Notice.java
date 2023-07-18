@@ -1,11 +1,19 @@
 package me.tabernerojerry.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.sql.Date;
 
 @Entity
 @Table(name = "notice_details")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Notice {
 
     @Id

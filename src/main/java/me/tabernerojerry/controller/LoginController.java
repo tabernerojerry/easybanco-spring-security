@@ -1,8 +1,8 @@
 package me.tabernerojerry.controller;
 
+import lombok.RequiredArgsConstructor;
 import me.tabernerojerry.model.Customer;
 import me.tabernerojerry.repository.ICustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -16,13 +16,12 @@ import java.sql.Date;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class LoginController {
 
-    @Autowired
-    private ICustomerRepository customerRepository;
+    private final ICustomerRepository customerRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody Customer customer) {
@@ -56,5 +55,5 @@ public class LoginController {
         }
 
     }
-    
+
 }
