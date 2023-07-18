@@ -32,7 +32,7 @@ public class LoginController {
             customer.setPwd(hashPwd);
             customer.setCreateDt(new Date(System.currentTimeMillis()));
             savedCustomer = customerRepository.save(customer);
-            if (savedCustomer.getCustomerId() > 0) {
+            if (savedCustomer.getId() > 0) {
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
                         .body("Given user details are successfully registered");

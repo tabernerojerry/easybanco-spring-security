@@ -25,7 +25,7 @@ public class Customer {
     )
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_customer_id_seq")
     @Column(name = "customer_id")
-    private Long customerId;
+    private Long id;
 
     private String name;
 
