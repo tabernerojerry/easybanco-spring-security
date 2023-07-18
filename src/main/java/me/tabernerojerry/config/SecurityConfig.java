@@ -28,7 +28,9 @@ public class SecurityConfig {
                             return config;
                         }
                 ))
-                .csrf(CsrfConfigurer::disable)
+                .csrf(csrfCustomizer -> csrfCustomizer
+                        .ignoringRequestMatchers("/contact", "/register")
+                )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/contact", "/notices", "/register").permitAll()
                         .anyRequest().authenticated())
