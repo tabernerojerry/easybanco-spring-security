@@ -9,7 +9,7 @@ drop table authorities;
 drop table customers;
 
 CREATE TABLE customer (
-  customer_id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  customer_id SERIAL,
   name varchar(100) NOT NULL,
   email varchar(100) NOT NULL,
   mobile_number varchar(20) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE accounts (
   PRIMARY KEY (account_number),
   CONSTRAINT customer_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer (customer_id) ON DELETE CASCADE
 );
-CREATE INDEX customer_id ON accounts (customer_id);
+CREATE INDEX idx_accounts_customer_id ON accounts (customer_id);
 
 INSERT INTO accounts (customer_id, account_number, account_type, branch_address)
  VALUES (1, 1865764534, 'Savings', '123 Main Street, New York');
@@ -51,7 +51,7 @@ CREATE TABLE account_transactions (
   CONSTRAINT acct_user_ibfk_1 FOREIGN KEY (customer_id) REFERENCES customer (customer_id) ON DELETE CASCADE
 );
 CREATE INDEX idx_account_transactions_customer_id ON account_transactions (customer_id);
-CREATE INDEX account_number ON account_transactions (account_number);
+CREATE INDEX idx_account_transactions_account_number ON account_transactions (account_number);
 
 
 INSERT INTO account_transactions (transaction_id, account_number, customer_id, transaction_dt, transaction_summary, transaction_type,transaction_amt,
@@ -73,7 +73,7 @@ INSERT INTO account_transactions (transaction_id, account_number, customer_id, t
 closing_balance, create_dt)  VALUES (gen_random_uuid(), 1865764534, 1, NOW() - INTERVAL '1 hour', 'Amazon.com', 'Withdrawal', 100,34900,NOW() - INTERVAL '1 hour');
 
 CREATE TABLE loans (
-  loan_number int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  loan_number SERIAL,
   customer_id int NOT NULL,
   start_dt date NOT NULL,
   loan_type varchar(100) NOT NULL,
@@ -99,7 +99,7 @@ INSERT INTO loans ( customer_id, start_dt, loan_type, total_loan, amount_paid, o
  VALUES ( 1, '2018-02-14', 'Personal', 10000, 3500, 6500, '2018-02-14');
 
 CREATE TABLE cards (
-  card_id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  card_id SERIAL,
   card_number varchar(100) NOT NULL,
   customer_id int NOT NULL,
   card_type varchar(100) NOT NULL,
@@ -122,7 +122,7 @@ INSERT INTO cards (card_number, customer_id, card_type, total_limit, amount_used
  VALUES ('2359XXXX9346', 1, 'Credit', 20000, 4000, 16000, NOW());
 
 CREATE TABLE notice_details (
-  notice_id int NOT NULL GENERATED ALWAYS AS IDENTITY,
+  notice_id SERIAL,
   notice_summary varchar(200) NOT NULL,
   notice_details varchar(500) NOT NULL,
   notic_beg_dt date NOT NULL,
