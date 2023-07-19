@@ -175,22 +175,27 @@ CREATE TABLE authorities (
 );
 CREATE INDEX idx_authorities_customer_id on authorities (customer_id);
 
-DELETE FROM authorities;
-
+-- Authorities Demo
 INSERT INTO authorities (customer_id, name)
  VALUES (1, 'VIEWACCOUNT');
 
 INSERT INTO authorities (customer_id, name)
  VALUES (1, 'VIEWCARDS');
 
- INSERT INTO authorities (customer_id, name)
-  VALUES (1, 'VIEWLOANS');
+INSERT INTO authorities (customer_id, name)
+VALUES (1, 'VIEWLOANS');
 
- INSERT INTO authorities (customer_id, name)
-   VALUES (1, 'VIEWBALANCE');
+INSERT INTO authorities (customer_id, name)
+VALUES (1, 'VIEWBALANCE');
 
- INSERT INTO authorities (customer_id, name)
-  VALUES (1, 'ROLE_USER');
+-- Roles Demo
+DELETE FROM authorities;
 
- INSERT INTO authorities (customer_id, name)
-  VALUES (1, 'ROLE_ADMIN');
+INSERT INTO authorities (customer_id, name)
+VALUES (1, 'ROLE_USER');
+
+INSERT INTO authorities (customer_id, name)
+VALUES (1, 'ROLE_ADMIN');
+
+INSERT INTO authorities (customer_id, name)
+VALUES (2, 'ROLE_ADMIN');
