@@ -1,6 +1,7 @@
 package me.tabernerojerry.config;
 
 import lombok.RequiredArgsConstructor;
+import me.tabernerojerry.model.Authority;
 import me.tabernerojerry.model.Customer;
 import me.tabernerojerry.repository.ICustomerRepository;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
@@ -33,9 +35,11 @@ public class EasyBancoAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException("Bad credentials");
         } else {
             if (passwordEncoder.matches(password, customerList.get(0).getPwd())) {
-                List<GrantedAuthority> authorityList = new ArrayList<>();
-                authorityList.add(new SimpleGrantedAuthority(customerList.get(0).getRole()));
-                return new UsernamePasswordAuthenticationToken(username, password, authorityList);
+                return new UsernamePasswordAuthenticationToken(
+                        username,
+                        password,
+                        getGrantedAuthorities(customerList.get(0).getAuthorities())
+                );
             } else {
                 throw new BadCredentialsException("Invalid username or password");
             }
@@ -45,6 +49,14 @@ public class EasyBancoAuthenticationProvider implements AuthenticationProvider {
     @Override
     public boolean supports(Class<?> authentication) {
         return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
+    }
+
+    private List<GrantedAuthority> getGrantedAuthorities(Set<Authority> authorities) {
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        for (Authority authority : authorities) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
+        }
+        return grantedAuthorities;
     }
 
 }
