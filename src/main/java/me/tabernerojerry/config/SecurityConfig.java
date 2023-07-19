@@ -1,9 +1,6 @@
 package me.tabernerojerry.config;
 
-import me.tabernerojerry.filter.AuthoritiesLoggignAtFilter;
-import me.tabernerojerry.filter.AuthoritiesLoggingAfterFilter;
-import me.tabernerojerry.filter.CsrfCookieFilter;
-import me.tabernerojerry.filter.RequestValidationBeforeFilter;
+import me.tabernerojerry.filter.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -49,6 +46,7 @@ public class SecurityConfig {
                 .addFilterAt(new AuthoritiesLoggignAtFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
+                .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/contact", "/notices", "/register").permitAll()
                         /* .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
