@@ -1,5 +1,6 @@
 package me.tabernerojerry.config;
 
+import me.tabernerojerry.filter.AuthoritiesLoggignAtFilter;
 import me.tabernerojerry.filter.AuthoritiesLoggingAfterFilter;
 import me.tabernerojerry.filter.CsrfCookieFilter;
 import me.tabernerojerry.filter.RequestValidationBeforeFilter;
@@ -44,6 +45,7 @@ public class SecurityConfig {
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 )
                 .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
+                .addFilterAt(new AuthoritiesLoggignAtFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
