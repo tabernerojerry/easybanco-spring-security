@@ -20,8 +20,8 @@ public class ContactController {
 
     private final IContactRepository contactRepository;
 
-//    @PreFilter("filterObject.contactName != 'Test'")
-    @PostFilter("filterObject.contactName != 'Test'")
+    @PreFilter("filterObject.contactName != 'Test'")
+//    @PostFilter("filterObject.contactName != 'Test'")
     @PostMapping("/contact")
     public List<Contact> saveContactInquiryDetails(@RequestBody List<Contact> contacts) {
         Contact contact = contacts.get(0);
