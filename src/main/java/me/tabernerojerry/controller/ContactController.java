@@ -3,6 +3,7 @@ package me.tabernerojerry.controller;
 import lombok.RequiredArgsConstructor;
 import me.tabernerojerry.model.Contact;
 import me.tabernerojerry.repository.IContactRepository;
+import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,8 @@ public class ContactController {
 
     private final IContactRepository contactRepository;
 
-    @PreFilter("filterObject.contactName != 'Test'")
+//    @PreFilter("filterObject.contactName != 'Test'")
+    @PostFilter("filterObject.contactName != 'Test'")
     @PostMapping("/contact")
     public List<Contact> saveContactInquiryDetails(@RequestBody List<Contact> contacts) {
         Contact contact = contacts.get(0);
