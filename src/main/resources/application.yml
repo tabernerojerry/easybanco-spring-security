@@ -3,6 +3,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
+#          Get the info in the url below jwks_uri value:
+#          http://localhost:8081/realms/easybanco/:well-known/openid-configuration
           jwk-set-uri: http://localhost:8081/realms/easybanco/protocol/openid-connect/certs
   datasource:
     url: jdbc:postgresql://localhost:5432/easy_banco
