@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IAccountTransactionsRepository extends JpaRepository<AccountTransactions, Long> {
 
-    List<AccountTransactions> findByCustomerIdOrderByTransactionDtDesc(int customerId);
+    List<AccountTransactions> findByCustomerIdOrderByTransactionDtDesc(Long customerId);
 
 }

@@ -1,8 +1,9 @@
 spring:
-#    security:
-#        user:
-#            name: happy
-#            password: qwerty
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8081/realms/easybanco/protocol/openid-connect/certs
   datasource:
     url: jdbc:postgresql://localhost:5432/easy_banco
     username: postgres
