@@ -141,7 +141,7 @@ VALUES ('Net Banking Offers', 'Customers who will opt for Internet banking while
 NOW() - INTERVAL '30 DAY', NOW() + INTERVAL '30 DAY', NOW(), null);
 
 INSERT INTO notice_details ( notice_summary, notice_details, notic_beg_dt, notic_end_dt, create_dt, update_dt)
-VALUES ('Mobile App Downtime', 'The mobile application of the EazyBank will be down from 2AM-5AM on 12/05/2020 due to maintenance activities',
+VALUES ('Mobile App Downtime', 'The mobile application of the EasyBanco will be down from 2AM-5AM on 12/05/2020 due to maintenance activities',
 NOW() - INTERVAL '30 DAY', NOW() + INTERVAL '30 DAY', NOW(), null);
 
 INSERT INTO notice_details ( notice_summary, notice_details, notic_beg_dt, notic_end_dt, create_dt, update_dt)
@@ -149,11 +149,11 @@ VALUES ('E Auction notice', 'There will be a e-auction on 12/08/2020 on the Bank
 NOW() - INTERVAL '30 DAY', NOW() + INTERVAL '30 DAY', NOW(), null);
 
 INSERT INTO notice_details ( notice_summary, notice_details, notic_beg_dt, notic_end_dt, create_dt, update_dt)
-VALUES ('Launch of Millennia Cards', 'Millennia Credit Cards are launched for the premium customers of EazyBank. With these cards, you will get 5% cashback for each purchase',
+VALUES ('Launch of Millennia Cards', 'Millennia Credit Cards are launched for the premium customers of EasyBanco. With these cards, you will get 5% cashback for each purchase',
 NOW() - INTERVAL '30 DAY', NOW() + INTERVAL '30 DAY', NOW(), null);
 
 INSERT INTO notice_details ( notice_summary, notice_details, notic_beg_dt, notic_end_dt, create_dt, update_dt)
-VALUES ('COVID-19 Insurance', 'EazyBank launched an insurance policy which will cover COVID-19 expenses. Please reach out to the branch for more details',
+VALUES ('COVID-19 Insurance', 'EasyBanco launched an insurance policy which will cover COVID-19 expenses. Please reach out to the branch for more details',
 NOW() - INTERVAL '30 DAY', NOW() + INTERVAL '30 DAY', NOW(), null);
 
 CREATE TABLE contact_messages (
@@ -190,9 +190,6 @@ VALUES (1, 'VIEWBALANCE');
 
 -- Roles Demo
 DELETE FROM authorities;
-
-INSERT INTO authorities (customer_id, name)
-VALUES (1, 'ROLE_USER');
 
 INSERT INTO authorities (customer_id, name)
 VALUES (1, 'ROLE_ADMIN');
